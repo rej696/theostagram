@@ -28,3 +28,43 @@ h1 {
     font-size: 60px;
 }
 
+p {
+    font-size: 16px;
+}
+
+.heading {
+    border-color: var(--orange, orange);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: var(--base02, grey);
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+
+img {
+    border-radius: 5px;
+    width: 50%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: var(--blue);
+    font-size: 24px;
+}
+a:link {
+    color: var(--blue);
+}
+a:visited {
+    color: var(--green);
+}
+a:hover {
+    color: var(--cyan);
+}
+a:active {
+    color: var(--red);
+}
