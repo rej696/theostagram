@@ -64,7 +64,7 @@ def theostagram_upload_form():
     Return /theostagram/upload/ web page for uploading images
     """
     url_kwargs = get_urls("style")
-    return render_template('theostagram-upload.html', **url_kwargs)
+    return render_template("theostagram-upload.html", **url_kwargs)
 
 
 @app.route("/theostagram/upload/", methods=['POST'])
@@ -92,7 +92,38 @@ def theostagram_upload_image():
     return redirect(request.url)
 
 
-@app.route("/theostagram/upload/display/<filename>/")
+def get_next_image(file_index):
+    """
+    Return the file index for the next image
+    """
+    return str(int(file_index) + 1)
+
+
+def get_image_filename(index: int):
+    """
+    Get the filename of the image at the specified index
+    """
+    filename_list = []
+    for file in os.listdir(app.config["UPLOAD_FOLDER"]):
+        if allowed_file(file):
+            filename_list.append(file)
+    return filename_list[index]
+
+
+@app.route("/theostagram/display/<file_index>")
+def theostagram_display_image(file_index):
+    """
+    Display image web page
+    """
+    filename = get_image_filename(int(file_index))
+    url_kwargs = get_urls("style")
+    return render_template("theostagram-display.html",
+                           filename=filename,
+                           next_file_index=get_next_image(file_index),
+                           **url_kwargs)
+
+
+@app.route("/theostagram/display-image/<filename>/")
 def display_image(filename):
     """
     Return URL for requested image to be displayed

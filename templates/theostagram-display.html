@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Theostagram Display</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{{ style }}">
+    </head>
+    <body>
+        <div class="heading">
+            <h1>Theostagram Display</h1>
+        </div>
+        {% if filename %}
+        <h2>{{ filename }}</h2>
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+        {% endif %}
+        <h3><a href="{{ url_for('theostagram_display_image', file_index=next_file_index) }}">Next Theomage</a></h3>
+        <h3><a href="/theostagram/">Back to Home</a></h3>
+    </body>
+</html>
+              
