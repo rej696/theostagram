@@ -115,7 +115,11 @@ def theostagram_display_image(file_index):
     """
     Display image web page
     """
-    filename = get_image_filename(int(file_index))
+    try:
+        filename = get_image_filename(int(file_index))
+    except IndexError:
+        flash('No more theomages')
+        return redirect(url_for('theostagram_home'))
     url_kwargs = get_urls("style")
     return render_template("theostagram-display.html",
                            filename=filename,
