@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Peacock Dreams: {{ page.title }}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{{ style }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pygments.css') }}">
+    </head>
+    <body>
+        <div class="heading">
+            {{ page.title }}
+        </div>
+
+        <div class="blog">
+        {{ page.html | safe }}
+        <div>
+
+    </body>
+</html>

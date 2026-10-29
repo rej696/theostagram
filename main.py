@@ -5,7 +5,15 @@ This module handles the HTTP requests for rowansaunders.duckdns.org
 import os
 
 from flask import Flask, render_template, url_for, flash, request, redirect
+from flask_flatpages import FlatPages, pygments_style_defs
 from werkzeug.utils import secure_filename
+
+FLATPAGES_AUTO_RELOAD = True
+FLATPAGES_EXTENSION = '.md'
+FLATPAGES_ROOT = 'content'
+BLOG_DIR = 'blog'
+WIKI_DIR = 'wiki'
+
 app = Flask(__name__)
 
 # setup image uploads ------------------------------------------------
@@ -15,6 +23,12 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.config['FLATPAGES_EXTENSION'] = FLATPAGES_EXTENSION
+app.config['FLATPAGES_MARKDOWN_EXTENSIONS'] = ['extra', 'codehilite', 'wikilinks', 'nl2br', 'tables']
+app.config['FLATPAGES_ROOT'] = FLATPAGES_ROOT
+app.config['FLATPAGES_AUTO_RELOAD'] = FLATPAGES_AUTO_RELOAD
+
+flatpages = FlatPages(app)
 
 
 def allowed_file(filename):
@@ -46,6 +60,21 @@ def home():
     """
     url_kwargs = get_urls("style")
     return render_template('home.html', **url_kwargs)
+
+
+@app.route("/blog/")
+def blog():
+    pages = [p for p in flatpages if p.path.startswith(BLOG_DIR)]
+    pages.sort(key=lambda item:item.path, reverse=False)
+    url_kwargs = get_urls("style")
+    return render_template('blog.html', pages=pages, **url_kwargs)
+
+@app.route("/blog/<name>/")
+def page(name):
+    path = '{}/{}'.format(BLOG_DIR, name)
+    page = flatpages.get_or_404(path)
+    url_kwargs = get_urls("style")
+    return render_template('page.html', page=page, **url_kwargs)
 
 
 # Theostagram -------------------------------------------------------

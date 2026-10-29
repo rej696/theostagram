@@ -1,47 +1,107 @@
-:root { 
-    --base03: #002b36; 
-    --base02: #073642; 
-    --base01: #586e75; 
-    --base00: #657b83; 
-    --base0: #839496; 
-    --base1: #93a1a1; 
-    --base2: #eee8d5; 
-    --base3: #fdf6e3; 
-    --yellow: #b58900; 
-    --orange: #cb4b16; 
-    --red: #dc322f; 
-    --magenta: #d33682; 
-    --violet: #6c71c4; 
-    --blue: #268bd2; 
-    --cyan: #2aa198; 
-    --green: #859900;
-} 
+/* :root {  */
+/*     --base03: #002b36;  */
+/*     --base02: #073642;  */
+/*     --base01: #586e75;  */
+/*     --base00: #657b83;  */
+/*     --base0: #839496;  */
+/*     --base1: #93a1a1;  */
+/*     --base2: #eee8d5;  */
+/*     --base3: #fdf6e3;  */
+/*     --yellow: #b58900;  */
+/*     --orange: #cb4b16;  */
+/*     --red: #dc322f;  */
+/*     --magenta: #d33682;  */
+/*     --violet: #6c71c4;  */
+/*     --blue: #268bd2;  */
+/*     --cyan: #2aa198;  */
+/*     --green: #859900; */
+/* }  */
 
-body { 
-    color: var(--base01); 
-    font-family: monospace; 
-    background-color: var(--base03, black); 
+:root {
+    /* I Like this one */
+    --orange: #cb4b16;
+
+    --cursor: #C9C9C9;
+
+    --bright-black: #3D3839;
+    --bright-blue: #61ABDA;
+    --bright-cyan: #65B8C1;
+    --bright-green: #8BAE68;
+    --bright-magenta: #CF86C1;
+    --bright-red: #E8838F;
+    --bright-white: #8E8E8E;
+    --bright-yellow: #D68C67;
+
+    --black: #191919;
+    --blue: #6099C0;
+    --cyan: #66A5AD;
+    --green: #819B69;
+    --magenta: #B279A7;
+    --red: #DE6E7C;
+    --white: #BBBBBB;
+    --yellow: #B77E64;
+}
+
+body {
+    color: var(--white);
+    font-family: monospace;
+    background-color: var(--black, black);
+    font-size: 1.1rem;
 }
 
 h1 {
+    color: var(--green);
+}
+
+h2 {
+    color: var(--orange);
+}
+
+h3 {
+    color: var(--yellow);
+}
+
+h4 {
     color: var(--red);
-    font-size: 60px;
 }
 
 p {
-    font-size: 16px;
+    /* font-size: 16px; */
+}
+
+strong {
+    color: var(--blue);
+}
+
+em {
+    color: var(--cyan);
+}
+
+.highlight {
+    color: var(--orange, orange);
+    background-color: var(--bright-black, grey);
 }
 
 .heading {
-    border-color: var(--orange, orange);
+    border-color: var(--blue, blue);
     border-width: 5px;
     border-style: solid;
     border-radius: 5px;
-    background-color: var(--base02, grey);
+    background-color: var(--bright-black, grey);
+    font-family: monospace;
     padding: 10px;
-    margin: 5px;
-    text-align: center;
+    margin: 10px;
+    font-size: 60px;
+    color: var(--green, green);
+    font-style: italic
+    /* text-align: left; */
 }
+
+.blog {
+    padding: 10px;
+    margin: 10px;
+}
+
 
 img {
     border-radius: 5px;
@@ -60,7 +120,7 @@ a:link {
     color: var(--blue);
 }
 a:visited {
-    color: var(--green);
+    color: var(--magenta);
 }
 a:hover {
     color: var(--cyan);
